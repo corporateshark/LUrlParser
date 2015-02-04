@@ -1,20 +1,12 @@
-**URL/URI Parser**
+#include <string>
+#include <iostream>
 
-(C) Sergey Kosarevsky, 2015
+#include "LUrlParser.h"
 
-support@linderdaum.com
+using namespace std;
 
-http://www.linderdaum.com
-http://blog.linderdaum.com
-
-=============================
-
-A tiny URL/URI parser in C++.
-
-=============================
-
-Usage example:
-
+int main()
+{
 	LUrlParser::clParseURL URL = LUrlParser::clParseURL::ParseURL( "https://John:Dow@github.com:80/corporateshark/LUrlParser" );
 
 	if ( URL.IsValid() )
@@ -29,4 +21,5 @@ Usage example:
 		cout << "Password  : " << URL.m_Password << endl;
 	}
 
-=============================
+	return 0;	
+}
