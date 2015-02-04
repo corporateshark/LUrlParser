@@ -1,4 +1,4 @@
-**URL/URI Parser**
+**Lightweight URL & URI parser (RFC 1738, RFC 3986)**
 
 (C) Sergey Kosarevsky, 2015
 
@@ -9,7 +9,7 @@ http://blog.linderdaum.com
 
 =============================
 
-A tiny URL/URI parser in C++.
+A tiny and lightweight URL & URI parser (RFC 1738, RFC 3986) written in C++.
 
 =============================
 

@@ -1,4 +1,5 @@
 /*
+ * Lightweight URL & URI parser (RFC 1738, RFC 3986)
  * Copyright (C) 2015 Sergey Kosarevsky (sk@linderdaum.com)
  * All rights reserved.
  * https://github.com/corporateshark/LUrlParser
