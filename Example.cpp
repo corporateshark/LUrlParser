@@ -4,10 +4,11 @@
 #include "LUrlParser.h"
 
 using namespace std;
+using LUrlParser::clParseURL;
 
 int main()
 {
-	LUrlParser::clParseURL URL = LUrlParser::clParseURL::ParseURL( "https://John:Dow@github.com:80/corporateshark/LUrlParser" );
+	clParseURL URL = clParseURL::ParseURL( "https://John:Dow@github.com:80/corporateshark/LUrlParser" );
 
 	if ( URL.IsValid() )
 	{
