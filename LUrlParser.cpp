@@ -36,6 +36,7 @@
 
 #include <algorithm>
 #include <cstring>
+#include <stdlib.h>
 
 // check if the scheme name is valid
 static bool IsSchemeValid( const std::string& SchemeName )
