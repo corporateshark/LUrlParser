@@ -8,7 +8,7 @@ using LUrlParser::clParseURL;
 
 int main()
 {
-	clParseURL URL = clParseURL::ParseURL( "https://John:Dow@github.com:80/corporateshark/LUrlParser" );
+	clParseURL URL = clParseURL::ParseURL( "https://John:Dow@github.com:80/corporateshark/LUrlParser/?&query=ssl#q=frag" );
 
 	if ( URL.IsValid() )
 	{
@@ -20,6 +20,10 @@ int main()
 		cout << "Fragment  : " << URL.m_Fragment << endl;
 		cout << "User name : " << URL.m_UserName << endl;
 		cout << "Password  : " << URL.m_Password << endl;
+	}
+	else
+	{
+		cout << "Parsing error: " << URL.m_ErrorCode << endl;
 	}
 
 	return 0;	
