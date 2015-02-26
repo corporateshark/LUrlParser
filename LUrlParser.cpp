@@ -51,7 +51,7 @@ static bool IsSchemeValid( const std::string& SchemeName )
 
 bool LUrlParser::clParseURL::GetPort( volatile int* OutPort ) const
 {
-	if ( !m_Valid ) { return false; }
+	if ( !IsValid() ) { return false; }
 
 	int Port = atoi( m_Port.c_str() );
 
@@ -81,8 +81,7 @@ LUrlParser::clParseURL LUrlParser::clParseURL::ParseURL( const std::string& URL 
 
 		if ( !LocalString )
 		{
-			// no scheme character
-			return clParseURL();
+			return clParseURL( LUrlParserError_NoUrlCharacter );
 		}
 
 		// save the scheme name
@@ -90,8 +89,7 @@ LUrlParser::clParseURL LUrlParser::clParseURL::ParseURL( const std::string& URL 
 
 		if ( !IsSchemeValid( Result.m_Scheme ) )
 		{
-			// invalid scheme name
-			return clParseURL();
+			return clParseURL( LUrlParserError_InvalidSchemeName );
 		}
 
 		// scheme should be lowercase
@@ -107,8 +105,8 @@ LUrlParser::clParseURL LUrlParser::clParseURL::ParseURL( const std::string& URL 
 	 */
 
 	// skip "//"
-	if ( *CurrentString++ != '/' ) return clParseURL();
-	if ( *CurrentString++ != '/' ) return clParseURL();
+	if ( *CurrentString++ != '/' ) return clParseURL( LUrlParserError_NoDoubleSlash );
+	if ( *CurrentString++ != '/' ) return clParseURL( LUrlParserError_NoDoubleSlash );
 
 	// check if the user name and password are specified
 	bool bHasUserName = false;
@@ -164,7 +162,7 @@ LUrlParser::clParseURL LUrlParser::clParseURL::ParseURL( const std::string& URL 
 		// skip '@'
 		if ( *CurrentString != '@' )
 		{
-			return clParseURL();
+			return clParseURL( LUrlParserError_NoAtSign );
 		}
 
 		CurrentString++;
@@ -214,13 +212,13 @@ LUrlParser::clParseURL LUrlParser::clParseURL::ParseURL( const std::string& URL 
 	// end of string
 	if ( !*CurrentString )
 	{
-		return clParseURL();
+		return clParseURL( LUrlParserError_UnexpectedEndOfLine );
 	}
 
 	// skip '/'
 	if ( *CurrentString != '/' )
 	{
-		return clParseURL();
+		return clParseURL( LUrlParserError_NoSlash );
 	}
 
 	CurrentString++;
@@ -266,7 +264,7 @@ LUrlParser::clParseURL LUrlParser::clParseURL::ParseURL( const std::string& URL 
 		CurrentString = LocalString;
 	}
 
-	Result.m_Valid = true;
+	Result.m_ErrorCode = LUrlParserError_Ok;
 
 	return Result;
 }
