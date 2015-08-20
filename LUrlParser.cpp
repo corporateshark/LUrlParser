@@ -49,7 +49,7 @@ static bool IsSchemeValid( const std::string& SchemeName )
 	return true;
 }
 
-bool LUrlParser::clParseURL::GetPort( volatile int* OutPort ) const
+bool LUrlParser::clParseURL::GetPort( int* OutPort ) const
 {
 	if ( !IsValid() ) { return false; }
 
