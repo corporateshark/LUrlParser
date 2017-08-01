@@ -205,7 +205,9 @@ LUrlParser::clParseURL LUrlParser::clParseURL::ParseURL( const std::string& URL 
 	// end of string
 	if ( !*CurrentString )
 	{
-		return clParseURL( LUrlParserError_UnexpectedEndOfLine );
+		Result.m_ErrorCode = LUrlParserError_Ok;
+
+		return Result;
 	}
 
 	// skip '/'
