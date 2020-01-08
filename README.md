@@ -1,6 +1,6 @@
 **Lightweight URL & URI parser (RFC 1738, RFC 3986)**
 
-(C) Sergey Kosarevsky, 2015
+(C) Sergey Kosarevsky, 2015-2020
 
 @corporateshark sk@linderdaum.com
 
@@ -16,20 +16,18 @@ A tiny and lightweight URL & URI parser (RFC 1738, RFC 3986) written in C++.
 
 Usage example:
 
-	using LUrlParser::clParseURL;
+	const auto URL = LUrlParser::ParseURL::ParseURL( "https://John:Dow@github.com:80/corporateshark/LUrlParser" );
 
-	clParseURL URL = clParseURL::ParseURL( "https://John:Dow@github.com:80/corporateshark/LUrlParser" );
-
-	if ( URL.IsValid() )
+	if ( URL.isValid() )
 	{
-		cout << "Scheme    : " << URL.m_Scheme << endl;
-		cout << "Host      : " << URL.m_Host << endl;
-		cout << "Port      : " << URL.m_Port << endl;
-		cout << "Path      : " << URL.m_Path << endl;
-		cout << "Query     : " << URL.m_Query << endl;
-		cout << "Fragment  : " << URL.m_Fragment << endl;
-		cout << "User name : " << URL.m_UserName << endl;
-		cout << "Password  : " << URL.m_Password << endl;
+		cout << "Scheme    : " << URL.scheme_ << endl;
+		cout << "Host      : " << URL.host_ << endl;
+		cout << "Port      : " << URL.port_ << endl;
+		cout << "Path      : " << URL.path_ << endl;
+		cout << "Query     : " << URL.query_ << endl;
+		cout << "Fragment  : " << URL.fragment_ << endl;
+		cout << "User name : " << URL.userName_ << endl;
+		cout << "Password  : " << URL.password_ << endl;
 	}
 
 =============================
