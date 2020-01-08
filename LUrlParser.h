@@ -4,7 +4,7 @@
  * 
  * The MIT License (MIT)
  * 
- * Copyright (C) 2015 Sergey Kosarevsky (sk@linderdaum.com)
+ * Copyright (C) 2015-2020 Sergey Kosarevsky (sk@linderdaum.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
