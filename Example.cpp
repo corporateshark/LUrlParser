@@ -4,27 +4,26 @@
 #include "LUrlParser.h"
 
 using namespace std;
-using LUrlParser::clParseURL;
 
 int main()
 {
-	clParseURL URL = clParseURL::ParseURL( "https://John:Dow@github.com:80/corporateshark/LUrlParser/?&query=ssl#q=frag" );
+	const auto URL = LUrlParser::ParseURL::parseURL("https://John:Dow@github.com:80/corporateshark/LUrlParser/?&query=ssl#q=frag");
 
-	if ( URL.IsValid() )
+	if (URL.isValid())
 	{
-		cout << "Scheme    : " << URL.m_Scheme << endl;
-		cout << "Host      : " << URL.m_Host << endl;
-		cout << "Port      : " << URL.m_Port << endl;
-		cout << "Path      : " << URL.m_Path << endl;
-		cout << "Query     : " << URL.m_Query << endl;
-		cout << "Fragment  : " << URL.m_Fragment << endl;
-		cout << "User name : " << URL.m_UserName << endl;
-		cout << "Password  : " << URL.m_Password << endl;
+		cout << "Scheme    : " << URL.scheme_ << endl;
+		cout << "Host      : " << URL.host_ << endl;
+		cout << "Port      : " << URL.port_ << endl;
+		cout << "Path      : " << URL.path_ << endl;
+		cout << "Query     : " << URL.query_ << endl;
+		cout << "Fragment  : " << URL.fragment_ << endl;
+		cout << "User name : " << URL.userName_ << endl;
+		cout << "Password  : " << URL.password_ << endl;
 	}
 	else
 	{
-		cout << "Parsing error: " << URL.m_ErrorCode << endl;
+		cout << "Parsing error: " << URL.errorCode_ << endl;
 	}
 
-	return 0;	
+	return 0;
 }

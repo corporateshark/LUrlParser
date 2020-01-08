@@ -43,36 +43,32 @@ namespace LUrlParser
 		LUrlParserError_NoSlash = 7,
 	};
 
-	class clParseURL
+	class ParseURL
 	{
 	public:
-		LUrlParserError m_ErrorCode;
-		std::string m_Scheme;
-		std::string m_Host;
-		std::string m_Port;
-		std::string m_Path;
-		std::string m_Query;
-		std::string m_Fragment;
-		std::string m_UserName;
-		std::string m_Password;
-
-		clParseURL()
-			: m_ErrorCode( LUrlParserError_Uninitialized )
-		{}
+		LUrlParserError errorCode_ = LUrlParserError_Uninitialized;
+		std::string scheme_;
+		std::string host_;
+		std::string port_;
+		std::string path_;
+		std::string query_;
+		std::string fragment_;
+		std::string userName_;
+		std::string password_;
 
 		/// return 'true' if the parsing was successful
-		bool IsValid() const { return m_ErrorCode == LUrlParserError_Ok; }
+		bool isValid() const { return errorCode_ == LUrlParserError_Ok; }
 
 		/// helper to convert the port number to int, return 'true' if the port is valid (within the 0..65535 range)
-		bool GetPort( int* OutPort ) const;
+		bool getPort(int* outPort) const;
 
 		/// parse the URL
-		static clParseURL ParseURL( const std::string& URL );
+		static ParseURL parseURL(const std::string& url);
 
 	private:
-		explicit clParseURL( LUrlParserError ErrorCode )
-			: m_ErrorCode( ErrorCode )
+		ParseURL() = default;
+		explicit ParseURL(LUrlParserError errorCode)
+			: errorCode_(errorCode)
 		{}
 	};
-
 } // namespace LUrlParser
